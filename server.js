@@ -1,21 +1,23 @@
+require('dotenv').config(); // Load environment variables from .env file
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
-// MySQL Database Connection
+// MySQL Database Connection (using environment variables)
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'bobby',
-    database: 'contact_us',
+    host: process.env.DB_HOST || 'localhost',  // Use DB_HOST environment variable
+    user: process.env.DB_USER || 'root',      // Use DB_USER environment variable
+    password: process.env.DB_PASSWORD || '',  // Use DB_PASSWORD environment variable
+    database: process.env.DB_NAME || 'contact_us', // Use DB_NAME environment variable
 });
 
 // Connect to Database
