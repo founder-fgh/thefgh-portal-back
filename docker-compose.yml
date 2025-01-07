@@ -8,12 +8,12 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - DB_HOST=db
+      - DB_HOST=db        # This is the hostname that should match the service name
       - DB_USER=root
       - DB_PASSWORD=bobby
       - DB_NAME=contact_us
     depends_on:
-      - db
+      - db                 # Ensures that MySQL starts first
 
   db:
     image: mysql:8.0
