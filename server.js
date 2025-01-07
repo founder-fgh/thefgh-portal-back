@@ -12,12 +12,11 @@ app.use(cors());
 
 // MySQL Database Connection
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'bobby',
-    database: process.env.DB_NAME || 'contact_us',
+    host: 'localhost',
+    user: 'root',
+    password: 'bobby',
+    database: 'contact_us',
 });
-
 
 // Connect to Database
 db.connect((err) => {
